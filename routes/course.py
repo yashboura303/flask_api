@@ -131,7 +131,7 @@ def create_course():
     data['date-updated'] = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")
     courses.append(data)
 
-    return jsonify({"data": data}), 200
+    return jsonify({"data": data}), 201
 
 
 @app.route("/course/<int:id>", methods=['PUT'])
@@ -190,7 +190,7 @@ def delete_course(id):
         del courses[index]
         return jsonify({
             "message": "The specified course was deleted"
-        }), 204
+        }), 200
     else:
         return jsonify({
             "message": f"Course {id} does not exist"
